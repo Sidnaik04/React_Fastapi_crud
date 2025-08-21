@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import apiClient from "../api";
 
 const GetStudent = () => {
   const [studentId, setStudentId] = useState("");
@@ -8,9 +8,7 @@ const GetStudent = () => {
 
   const handleSearch = async () => {
     try {
-      const API_URL =
-        import.meta.env.REACT_APP_API_URL || "http://localhost:8000/students/";
-      const response = await axios.get(`${API_URL}/students/`);
+      const response = await apiClient.get("/students/");
       setStudent(response.data);
       setError("");
     } catch {

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import apiClient from "../api";
 
 const AddStudent = () => {
   const [name, setName] = useState("");
@@ -10,9 +10,7 @@ const AddStudent = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const API_URL =
-        import.meta.env.REACT_APP_API_URL || "http://localhost:8000/students/";
-      const response = await axios.post(`${API_URL}/students/`, {
+      const response = await apiClient.post("/students/", {
         name,
         email,
         age: parseInt(age),

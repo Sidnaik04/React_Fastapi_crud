@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import apiClient from "../api";
 
 const DeleteStudent = () => {
   const [studentId, setStudentId] = useState("");
@@ -7,9 +7,7 @@ const DeleteStudent = () => {
 
   const handleDelete = async () => {
     try {
-      const API_URL =
-        import.meta.env.REACT_APP_API_URL || "http://localhost:8000/students/";
-      await axios.delete(`${API_URL}/students/`);
+      await apiClient.delete("/students/");
       setMessage("Student deleted successfully!");
       setStudentId("");
     } catch (error) {

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import apiClient from "../api";
 
 const UpdateStudent = () => {
   const [studentId, setStudentId] = useState("");
@@ -15,9 +15,7 @@ const UpdateStudent = () => {
       if (name) updateData.name = name;
       if (email) updateData.email = email;
       if (age) updateData.age = parseInt(age);
-      const API_URL =
-        import.meta.env.REACT_APP_API_URL || "http://localhost:8000/students/";
-      await axios.put(`${API_URL}/students/`, updateData);
+      await apiClient.put("/students/", updateData);
       setMessage("Student updated successfully!");
     } catch (error) {
       setMessage("Error updating student.");

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import apiClient from "../api";
 
 const AllStudents = () => {
   const [students, setStudents] = useState([]);
@@ -7,10 +7,7 @@ const AllStudents = () => {
   useEffect(() => {
     const fetchStudents = async () => {
       try {
-        const API_URL =
-          import.meta.env.REACT_APP_API_URL ||
-          "http://localhost:8000/students/";
-        const response = await axios.get(`${API_URL}/students/`);
+        const response = await apiClient.get("/students/");
         setStudents(response.data);
       } catch (error) {
         console.error("Error fetching students:", error);
