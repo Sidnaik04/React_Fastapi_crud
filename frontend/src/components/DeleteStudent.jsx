@@ -7,7 +7,7 @@ const DeleteStudent = () => {
 
   const handleDelete = async () => {
     try {
-      await apiClient.delete("/students/");
+      await apiClient.delete(`/students/${studentId}`);
       setMessage("Student deleted successfully!");
       setStudentId("");
     } catch (error) {

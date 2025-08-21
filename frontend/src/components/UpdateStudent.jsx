@@ -15,7 +15,7 @@ const UpdateStudent = () => {
       if (name) updateData.name = name;
       if (email) updateData.email = email;
       if (age) updateData.age = parseInt(age);
-      await apiClient.put("/students/", updateData);
+      await apiClient.put(`/students/${studentId}`, updateData);
       setMessage("Student updated successfully!");
     } catch (error) {
       setMessage("Error updating student.");

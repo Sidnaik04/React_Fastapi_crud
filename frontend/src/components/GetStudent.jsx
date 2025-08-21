@@ -8,7 +8,7 @@ const GetStudent = () => {
 
   const handleSearch = async () => {
     try {
-      const response = await apiClient.get("/students/");
+      const response = await apiClient.get(`/students/${studentId}`);
       setStudent(response.data);
       setError("");
     } catch {
