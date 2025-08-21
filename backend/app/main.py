@@ -10,7 +10,6 @@ models.Base.metadata.create_all(bind=engine)
 app = FastAPI()
 
 origins = [
-    "http://localhost:8000",
     "http://localhost:5173",
     "https://react-fastapi-crud.vercel.app",
 ]
